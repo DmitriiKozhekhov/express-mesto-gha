@@ -1,7 +1,7 @@
 const Users = require("../models/user");
 const mongoose = require("mongoose");
 
-const { NOT_FOUND, CAST_ERROR } = require("../constants/constants");
+const { NOT_FOUND, CAST_ERROR } = require("../constants");
 module.exports.getUsers = (req, res) => {
   Users.find({})
     .then((user) => res.status(200).send(user))
