@@ -1,6 +1,6 @@
 const { default: mongoose } = require("mongoose");
 const Cards = require("../models/card");
-const { NOT_FOUND, CAST_ERROR } = require("../constants");
+const { NOT_FOUND, CAST_ERROR } = require("../constants/constants");
 module.exports.getCard = (req, res) => {
   Cards.find({})
     .then((card) => res.status(200).send(card))

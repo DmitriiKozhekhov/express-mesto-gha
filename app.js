@@ -8,18 +8,19 @@ app.use(express.json());
 
 mongoose.connect("mongodb://localhost:27017/mestodb");
 
-
-
-app.use("/users", require("./routes/users"));
-
-app.use("/cards", require("./routes/cards"));
-
 app.use((req, res, next) => {
   req.user = {
     _id: "635a5cb072c43e1a51a6a5bc", // вставьте сюда _id созданного в предыдущем пункте пользователя
   };
 
   next();
+});
+
+app.use("/users", require("./routes/users"));
+app.use("/cards", require("./routes/cards"));
+
+app.use((req, res) => {
+  res.status(404).send({ message: "Некорректный путь запроса" });
 });
 
 app.listen(PORT, () => {
