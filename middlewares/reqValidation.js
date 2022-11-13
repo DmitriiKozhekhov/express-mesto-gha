@@ -7,7 +7,7 @@ module.exports.validationOfAuth = celebrate({
     about: Joi.string().min(2).max(30),
     avatar: Joi.string().regex(regex),
     email: Joi.string().required().email(),
-    password: Joi.string().required().min(8),
+    password: Joi.string().required(),
   }),
 });
 module.exports.validationOfUser = celebrate({
@@ -23,7 +23,7 @@ module.exports.validationOfAvatar = celebrate({
 });
 module.exports.validationOfUserId = celebrate({
   params: Joi.object().keys({
-    userId: Joi.string().alphanum().length(24),
+    userId: Joi.string().length(24).hex().required(),
   }),
 });
 module.exports.validationOfCard = celebrate({
@@ -34,6 +34,6 @@ module.exports.validationOfCard = celebrate({
 });
 module.exports.validationOfCardId = celebrate({
   params: Joi.object().keys({
-    cardId: Joi.string().alphanum().length(24),
+    cardId: Joi.string().length(24).hex().required(),
   }),
 });
