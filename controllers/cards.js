@@ -16,7 +16,7 @@ module.exports.createCard = (req, res, next) => {
   const { name, link } = req.body;
   Cards.create({ name, link, owner: req.user._id })
     .then((card) => {
-      res.send({ data: card });
+      res.send(card);
     })
     .catch((err) => {
       if (err instanceof mongoose.Error.ValidationError) {
