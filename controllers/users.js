@@ -86,7 +86,7 @@ module.exports.editUser = (req, res, next) => {
     });
 };
 module.exports.editAvatar = (req, res, next) => {
-  Users.findByIdAndUpdate(req.user._id, req.body.avatar, {
+  Users.findByIdAndUpdate(req.user._id, req.body, {
     new: true,
     runValidators: true,
   })
